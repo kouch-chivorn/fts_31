@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
   
-  devise_for :admins, controllers: {sessions: "admins/sessions", 
-            registrations: "admins/registrations",
-            users: "admins/users"}
+  devise_for :admins, controllers: {sessions: "admins/sessions"}
+
   namespace :admins do
     root "users#index"
-    resources :users, only: :show
-    resources :categories
   end
+
   devise_for :users
   
   root "static_pages#home"

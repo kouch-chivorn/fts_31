@@ -11,4 +11,8 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user] || Devise.mappings[:admin]
   end
+
+  def shorten str
+    str
+  end
 end

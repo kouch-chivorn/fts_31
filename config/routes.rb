@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root "users#index"
+    resources :categories
+    resources :users, only: :show
   end
-
+  
   devise_for :users
   
   root "static_pages#home"

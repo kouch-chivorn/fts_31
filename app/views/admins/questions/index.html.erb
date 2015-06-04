@@ -1,0 +1,17 @@
+<h1> All Questions</h1>
+<div class="row">
+  <div class="col-md-5 col-md-offset-1">
+    <h2> <%= @category.name %></h2>
+
+    <%= will_paginate %>
+
+    <table>
+      <%= render @questions %>
+    </table>
+
+    <%= will_paginate %>
+
+    <%= link_to "Add Question", new_admins_category_question_path,
+      class: "btn btn-primary"  %>
+  </div>
+</div>

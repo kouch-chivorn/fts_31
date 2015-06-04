@@ -1,0 +1,14 @@
+<div class="col-md-5 cold-md-offset-5">
+  <h2> About Category</h2>
+  <div>
+    <label>Name: </label><%= @category.name %>
+  </div>
+  <div>
+    <label>Description: </label><%= @category.description %>
+  </div>
+  <div>
+  <%= link_to "Add Question", 
+  [:new, :admins, @category, :question],
+    class: "btn btn-large btn-primary"  %>
+  </div>
+</div>

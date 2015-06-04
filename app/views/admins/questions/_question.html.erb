@@ -1,0 +1,14 @@
+<tr>
+  <td><%= question.id %></td>
+  <td><%= link_to question.content, 
+    edit_admins_category_question_path(@category.id, question) %></td>
+  <td>
+    <%= question.answers.each do |answer| %>
+      <%= answer.content %>
+  </td>
+  <td>
+    <%= link_to "Delete", [:admins, @category, word], 
+      data: {method: :delete, confirm: t("question.message.you_sure")},
+      class: "btn btn-danger btn-medium" %>
+  </td>
+</tr>

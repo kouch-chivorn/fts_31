@@ -1,0 +1,12 @@
+<h1> All Categories</h1>
+
+<%= will_paginate %>
+
+<table class="table">
+  <%= render @categories %>
+</table>
+
+<%= will_paginate %>
+<div>
+  <%= link_to "Add Category", new_admins_category_path  %>
+</div>

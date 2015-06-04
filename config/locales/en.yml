@@ -20,4 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  error_message: "The form contains %{message}"
+  category:
+    message:
+      notice: "%{category} is created successfully"
+      you_sure: "Are you sure?"
+  question:
+    message:
+      notice: "%{question} is created successfully"
+      delete: "%{question} is deleted successfully"
+      you_sure: "Are you sure?"
+    model:
+      choose_one: "You have to choose one correct answer."

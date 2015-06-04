@@ -4,5 +4,5 @@ class Admins::SessionsController < Devise::SessionsController
   def create
     super
     # redirect_to admins_root_path
-  end 
+  end
 end

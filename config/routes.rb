@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root "users#index"
-    resources :categories
+    resources :categories do
+      resources :questions
+    end
     resources :users, only: :show
   end
   

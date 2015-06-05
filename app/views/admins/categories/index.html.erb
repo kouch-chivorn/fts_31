@@ -2,8 +2,11 @@
 
 <%= will_paginate %>
 
-<table>
+<table class="table">
   <%= render @categories %>
 </table>
 
 <%= will_paginate %>
+<div>
+  <%= link_to "Add Category", new_admins_category_path  %>
+</div>

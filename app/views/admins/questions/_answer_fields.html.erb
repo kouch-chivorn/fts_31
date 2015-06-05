@@ -1,0 +1,11 @@
+<div class="fields row">
+  <div class="col-md-1">
+    <%= f.label :content, "Answer" %>
+  </div>
+  <div class="col-md-6"><%= f.text_field :content, class:"form-control" %></div>
+  <div class="col-md-3"><%= f.label :correct %><%= f.check_box :correct, class: "checkbox" %>
+    </div>
+   
+    <div class="col-md-1 checkbox" > <%= link_to_remove_fields "Remove", f %></div>
+</div>
+ 

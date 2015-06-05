@@ -148,6 +148,25 @@ input {
   @extend .error;
 }
 
+.btn-start {
+  width: 50%;
+}
+
+.border {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.test-option {
+  margin-left: auto;
+  margin-right: auto;
+}
 /* users index */
 
 .users {
@@ -161,4 +180,8 @@ input {
       border-bottom: 1px solid $grayLighter;
     }
   }
+}
+
+.check{
+  float: right;
 }

@@ -1,0 +1,28 @@
+<h1> All Test </h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [:admins, @test], class: "question-form" do |f| %>
+      <div class="border">
+        <%= f.collection_select :category_id, Category.all, :id, :name, {},
+          {class: "form-control test-option", style: "width: auto"} %>
+        <%= f.hidden_field :status, value: Settings.status.start %>
+        <%= f.submit "Start New Test", 
+          class: "btn-start btn btn-primary btn-large"%>
+      </div>
+    <% end %>      
+  </div>
+</div>
+
+<div class=row>
+  <div class="col-md-2">Test</div>
+  <div class="col-md-2">User</div>
+  <div class="col-md-2">Result</div>
+  <div class="col-md-2">Created At</div>
+  <div class="col-md-2">Stated At</div>
+  <div class="col-md-2">Status</div>
+</div>
+
+<div class =row>
+  <%= render @tests %>
+  <%= will_paginate @tests %>
+</div>

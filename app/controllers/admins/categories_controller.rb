@@ -1,5 +1,7 @@
 class Admins::CategoriesController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_category, except: [:new, :index, :create]
+
   layout "admins/application"
 
   def index
@@ -8,6 +10,9 @@ class Admins::CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+  end
+
+  def show
   end
 
   def create
@@ -22,26 +27,27 @@ class Admins::CategoriesController < ApplicationController
   end
 
   def destroy
-    @category = Category.find params[:id]
     @category.destroy
     redirect_to admins_categories_path
   end
 
   def edit
-    @category = Category.find params[:id]
   end
 
   def update
-    @category = Category.find params[:id]
     if @category.update_attributes category_params
-      redirect_to admins_subjects_path
+      redirect_to admins_categories_path
     else
       render "edit"
     end
   end
 
   private
+  def set_category
+    @category = Category.find params[:id]
+  end
+
   def category_params
-    params.require(:category).permit :name, :description
+    params.require(:category).permit :name, :description, :duration
   end
 end

@@ -7,6 +7,11 @@
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
+
+  <div class="field">
+    <%= f.label :duration,"Duration in minutes" %>
+    <%= f.text_field :duration %>
+  </div>
   
   <div class="field">
     <%= f.submit @category.new_record? ? "Create" : "Update", class: "btn btn-large btn-primary" %>

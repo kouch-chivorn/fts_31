@@ -3,3 +3,9 @@ desc_size: 5
 status:
   view:  "View"
   start: "Start"
+  testing: "Testing"
+model:
+  question:
+    choose_one: "You have to choose one correct answer!"
+test_quest:
+  num: 20

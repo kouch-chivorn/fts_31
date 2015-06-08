@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603150123) do
+ActiveRecord::Schema.define(version: 20150607143825) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150603150123) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.text     "description"
+    t.integer  "duration"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -74,8 +75,10 @@ ActiveRecord::Schema.define(version: 20150603150123) do
     t.integer  "user_id"
     t.integer  "category_id"
     t.integer  "result"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "status"
+    t.datetime "started_time"
   end
 
   add_index "tests", ["category_id"], name: "index_tests_on_category_id"

@@ -7,11 +7,14 @@ Rails.application.routes.draw do
     resources :categories do
       resources :questions
     end
-    resources :users, only: :show
+    resources :users, only: [:index, :show, :destroy] 
+    resources :tests, only: [:index, :show, :destroy]
   end
   
   devise_for :users
-  
+  resources :users, only: :show
+  resources :tests, except: [:new, :destroy] 
+
   root "static_pages#home"
 
   match "/help", to: "static_pages#help", via: :get

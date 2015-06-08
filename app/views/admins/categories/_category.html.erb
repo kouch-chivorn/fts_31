@@ -2,8 +2,9 @@
   <td><%= category.id %></td>
   <td><%= link_to category.name, admins_category_path(category) %></td>
   <td><%= link_to shorten(category.description.to_s) , admins_category_path(category) %></td>
+  <td><%= category.duration %></td>
   <td>
-    <%= link_to "Edit", admins_category_questions_path(category), 
+    <%= link_to "Edit", edit_admins_category_path(category), 
     class:"btn btn-medium btn-success"  %>
     <%= link_to "Delete", admins_category_path(category), 
       data: {method: :delete, confirm: I18n.t("category.message.you_sure")},

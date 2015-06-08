@@ -36,7 +36,7 @@ class Admins::CategoriesController < ApplicationController
 
   def update
     if @category.update_attributes category_params
-      redirect_to admins_subjects_path
+      redirect_to admins_categories_path
     else
       render "edit"
     end
@@ -48,6 +48,6 @@ class Admins::CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit :name, :description
+    params.require(:category).permit :name, :description, :duration
   end
 end

@@ -2,6 +2,8 @@ class Admins::QuestionsController < ApplicationController
   before_action :authenticate_admin!, :set_category
   before_action :set_question, except: [:index, :new, :create]
 
+  layout "admins/application"
+  
   def index
     @questions = Question.paginate page: params[:page], 
       per_page: Settings.page_size

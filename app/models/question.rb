@@ -13,7 +13,7 @@ class Question < ActiveRecord::Base
   private
   def check_answer
     if answers.select{|a| a.correct}.blank?
-      errors.add :base, t "question.model."
+      errors.add :base, t("question.model.choose_one")
     end
   end
 end

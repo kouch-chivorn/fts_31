@@ -7,7 +7,7 @@
       <%= answer.content %>
   </td>
   <td>
-    <%= link_to "Delete", [:admins, @category, word], 
+    <%= link_to "Delete", [:admins, @category, @question], 
       data: {method: :delete, confirm: t("question.message.you_sure")},
       class: "btn btn-danger btn-medium" %>
   </td>

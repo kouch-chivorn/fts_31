@@ -9,6 +9,7 @@ gem "will_paginate"
 gem "bootstrap-will_paginate"
 gem "devise"
 gem "rails_config"
+gem "jquery-countdown-rails"
 
 group :development, :test do
   gem "rspec-rails", "2.13.1"

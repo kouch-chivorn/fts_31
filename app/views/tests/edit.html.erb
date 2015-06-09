@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-offset-2">
+    <% if !@test.time_out? %>
+      <div id="time-left">
+        <span id="countdown" class="countdown time-left"></span>
+        <%= hidden_field_tag :duration, @time_left %>
+      </div>
+    <% end %>
+
+    <br>
+    <h1><%= @test.category.name %></h1>
+    <% if @test.time_out? %>
+      <h2>Result: <%= @test.result %></h2>
+    <% end %> 
+    <br><br>
+
+    <%= form_for @test do |f| %>
+      <div class="test_questions">
+        <%= f.fields_for :test_questions do |builder| %>
+          <%= render 'form', f: builder %>
+          <% if @test.time_out? %>
+            <% if builder.object.answer && builder.object.answer.correct %>
+              <p class="correct"> Correct! </p>
+            <% else %>
+              <p class="incorrect"> InCorrect! </p>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <% if !@test.time_out? %>
+        <div class="action">
+          <%= f.submit "Submit", 
+            class: "btn btn-primary col-md-1 col-md-offset-4", id: "submit_test_questions" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

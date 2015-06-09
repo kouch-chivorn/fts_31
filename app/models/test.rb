@@ -5,6 +5,8 @@ class Test < ActiveRecord::Base
 
   validates_presence_of :user_id
   validates_presence_of :category_id
+  before_create :create_questions
+  before_update :update_result
 
   accepts_nested_attributes_for :test_questions
 
@@ -22,7 +24,7 @@ class Test < ActiveRecord::Base
 
   def update_result
     points = test_questions.select do |test_question|
-      test_question.answer == test_question.question.answer.correct
+      test_question.answer && test_question.answer.correct
     end.count
     self.result = points
   end

@@ -1,4 +1,5 @@
 class TestsController < ApplicationController
+  before_action :set_test,only: [:show, :edit, :update]
   def index
     @test = Test.new
     @tests = current_user.tests
@@ -11,13 +12,14 @@ class TestsController < ApplicationController
   end
 
   def show
+    @i = 0
   end
 
   def create
     category = Category.find params[:test][:category_id]
     test = category.tests.build
     test.user_id = current_user.id
-    test.status = t(:start)
+    test.status = Settings.status.start
     if test.save
       flash[:success] = t("test.created")
       redirect_to tests_path
@@ -27,19 +29,19 @@ class TestsController < ApplicationController
   end
 
   def edit
-    @test = Test.find params[:id]
     if @test.started_time.nil?
       started_time = Time.zone.now
-      @test.update_attributes status: Settings.status.view, started_time:started_time
+      @test.update_attributes status: Settings.status.testing, started_time: started_time
     end
     @time_left = @test.category.duration * 60 - (Time.zone.now - @test.started_time).to_i
+    @i = 0
   end
 
   def update
-    @test = Test.find params[:id]
     if @test.update_attributes test_question_params
+      @test.update_attributes status: Settings.status.view
       flash[:success] = t("flash.answer_update")
-      redirect_to edit_test_path @test
+      redirect_to test_path @test
     else
       redirect_to :back
     end
@@ -49,6 +51,10 @@ class TestsController < ApplicationController
   private
   def test_question_params
     params.require(:test).permit test_questions_attributes: [:id, :answer_id]
+  end
+
+  def set_test
+    @test = Test.find params[:id]
   end
 end
 

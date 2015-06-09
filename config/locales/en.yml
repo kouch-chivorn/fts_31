@@ -32,3 +32,9 @@ en:
       you_sure: "Are you sure?"
     model:
       choose_one: "You have to choose one correct answer."
+  you_sure: "Are you sure?"
+  test:
+    deleted: "test is deleted successfully"
+  start: "Start"
+  view: "View"
+  testing: "Testing"

@@ -3,11 +3,11 @@
     <%= link_to "test app", "#", id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Categories", admins_categories_path  %></li>
-        <li><%= link_to "Tests", admins_tests_path %></li>
         <li> <%= link_to "Help", help_path %></li>
         <li> 
           <% if admin_signed_in? %>
+            <li><%= link_to "Categories", admins_categories_path  %></li>
+            <li><%= link_to "Tests", admins_tests_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <%= current_admin.name %> <b class="caret"></b>

@@ -9,3 +9,5 @@ model:
     choose_one: "You have to choose one correct answer!"
 test_quest:
   num: 20
+question:
+  content_length: 300

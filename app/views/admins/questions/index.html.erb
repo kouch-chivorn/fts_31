@@ -1,11 +1,10 @@
 <h1> All Questions</h1>
 <div class="row">
-  <div class="col-md-5 col-md-offset-1">
-    <h2> <%= @category.name %></h2>
+  <div class="col-md-10 col-md-offset-1">
 
     <%= will_paginate %>
 
-    <table>
+    <table class="table">
       <%= render @questions %>
     </table>
 

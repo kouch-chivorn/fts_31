@@ -18,7 +18,8 @@ class Admins::QuestionsController < ApplicationController
     @question = Question.new question_params
     @question.category = @category
     if @question.save!
-      flash[:notice]= t "question.message.notice", question: @question.name
+      flash[:notice]= t "question.message.notice", 
+        question: @question.category.name
       redirect_to [:admins, @category, :questions]
     else
       render :edit
@@ -34,7 +35,8 @@ class Admins::QuestionsController < ApplicationController
 
   def update
     if @question.update_attributes question_params
-      flash[:notice] = t "question.message.notice", question: @question.name
+      flash[:notice] = t "question.message.notice", 
+        question: @question.category.name
       redirect_to [:admins, @category, :questions]
     else
       render "edit"
@@ -43,7 +45,8 @@ class Admins::QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    flash[:notice] = t "question.message.delete", question: @question.name 
+    flash[:notice] = t "question.message.delete", 
+      question: @question.category.name
     redirect_to [:admins, @category, :questions]
   end
 

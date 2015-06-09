@@ -1,4 +1,5 @@
 class TestsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_test,only: [:show, :edit, :update]
   def index
     @test = Test.new
@@ -29,12 +30,20 @@ class TestsController < ApplicationController
   end
 
   def edit
-    if @test.started_time.nil?
-      started_time = Time.zone.now
-      @test.update_attributes status: Settings.status.testing, started_time: started_time
+    unless @test.status == Settings.status.view
+      if @test.started_time.nil?
+        started_time = Time.zone.now
+        @test.update_attributes status: Settings.status.testing, 
+          started_time: started_time
+      end
+      @time_left = @test.category.duration * 60 - (Time.zone.now - @test.started_time).to_i
+      if @time_left <= 0
+        @test.update_attributes status: Settings.status.view
+      end
+      @i = 0
+    else
+      redirect_to test_path @test
     end
-    @time_left = @test.category.duration * 60 - (Time.zone.now - @test.started_time).to_i
-    @i = 0
   end
 
   def update
@@ -57,4 +66,3 @@ class TestsController < ApplicationController
     @test = Test.find params[:id]
   end
 end
-

@@ -1,13 +1,19 @@
 <tr>
   <td><%= question.id %></td>
+  <td><%= question.category(:category_id).name unless question.category.blank? %></td>
   <td><%= link_to question.content, 
     edit_admins_category_question_path(@category.id, question) %></td>
   <td>
-    <%= question.answers.each do |answer| %>
-      <%= answer.content %>
+    <table class="table">
+        <% question.answers.each do |answer| %>
+          <tr><td>
+            <%= answer.content %>
+          </td><tr>
+        <% end %>
+    </table>
   </td>
   <td>
-    <%= link_to "Delete", [:admins, @category, @question], 
+    <%= link_to "Delete", [:admins, @category , question], 
       data: {method: :delete, confirm: t("question.message.you_sure")},
       class: "btn btn-danger btn-medium" %>
   </td>

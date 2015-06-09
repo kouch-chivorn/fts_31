@@ -40,8 +40,8 @@ function ready(){
     labels: ["Years", "Months", "weeks", "Days", "Hours", "Minutes", "Seconds"],
     onExpiry: function(){
       alert("Your exam is time out we are going to submit your test automaticaly");
-      $("#submit-test_questions").trigger("click");
-      $("#submit-test_questions").hidden();
+      $("#submit_test_questions").trigger("click");
+      $("#submit_test_questions").hidden();
     }
   });
 

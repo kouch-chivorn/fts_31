@@ -8,7 +8,8 @@ class Question < ActiveRecord::Base
                                 reject_if: :all_blank
 
   validates :category_id, presence: true
-  validates :content, presence: true, length: {maximum: 100}
+  validates :content, presence: true, 
+    length: {maximum: Settings.question.content_length}
 
   scope :random_questions, -> {limit(Settings.test_quest.num).order("RANDOM()")}
 

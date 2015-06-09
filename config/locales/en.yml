@@ -27,7 +27,7 @@ en:
       you_sure: "Are you sure?"
   question:
     message:
-      notice: "%{question} is created successfully"
+      notice: "A %{question} question is created successfully"
       delete: "%{question} is deleted successfully"
       you_sure: "Are you sure?"
     model:

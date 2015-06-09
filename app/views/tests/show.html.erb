@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-offset-2">
+
+    <h1><%= @test.category.name %></h1>
+      <h2>Result: <%= @test.result %>/<%= Settings.test_quest.num %></h2>
+    <br>
+
+    <%= form_for @test do |f| %>
+      <div class="test_questions">
+        <%= f.fields_for :test_questions do |builder| %>
+          <%= render 'form', f: builder %>
+            <% if builder.object.answer && builder.object.answer.correct %>
+              <p class="correct"> Correct! </p>
+            <% else %>
+              <p class="incorrect"> InCorrect! </p>
+            <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

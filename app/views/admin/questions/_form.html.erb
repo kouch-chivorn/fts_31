@@ -1,4 +1,4 @@
-<%= form_for [:admins, @category, @question], class: "form" do |f| %>
+<%= form_for [:admin, @category, @question], class: "form" do |f| %>
   <div class="form-group">
     <%= f.label :content, "Question" %><br/>
     <%= f.text_area :content, rows: 3 %><br/>

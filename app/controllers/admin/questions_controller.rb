@@ -1,8 +1,8 @@
-class Admins::QuestionsController < ApplicationController
-  before_action :authenticate_admin!, :set_category
+class Admin::QuestionsController < ApplicationController
+  before_action :authenticate_admin_admin!, :set_category
   before_action :set_question, except: [:index, :new, :create]
 
-  layout "admins/application"
+  layout "admin/application"
   
   def index
     @questions = Question.paginate page: params[:page], 
@@ -20,7 +20,7 @@ class Admins::QuestionsController < ApplicationController
     if @question.save!
       flash[:notice]= t "question.message.notice", 
         question: @question.category.name
-      redirect_to [:admins, @category, :questions]
+      redirect_to [:admin, @category, :questions]
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class Admins::QuestionsController < ApplicationController
     if @question.update_attributes question_params
       flash[:notice] = t "question.message.notice", 
         question: @question.category.name
-      redirect_to [:admins, @category, :questions]
+      redirect_to [:admin, @category, :questions]
     else
       render "edit"
     end
@@ -47,7 +47,7 @@ class Admins::QuestionsController < ApplicationController
     @question.destroy
     flash[:notice] = t "question.message.delete", 
       question: @question.category.name
-    redirect_to [:admins, @category, :questions]
+    redirect_to [:admin, @category, :questions]
   end
 
   private

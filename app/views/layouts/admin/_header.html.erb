@@ -6,14 +6,15 @@
         <li> <%= link_to "Help", help_path %></li>
         <li> 
           <% if admin_signed_in? %>
-            <li><%= link_to "Categories", admins_categories_path  %></li>
-            <li><%= link_to "Tests", admins_tests_path %></li>
+            <li><%= link_to "Categories", admin_categories_path  %></li>
+            <li><%= link_to "Tests", admin_tests_path %></li>
+            <li><%= link_to "Users", admin_users_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <%= current_admin.name %> <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Profile", "" %></li>
+                <li><%= link_to "Profile", current_admin %></li>
                 <li><%= link_to "Settings", "" %></li>
                 <li class="divider"></li>
                 <li>
@@ -22,7 +23,7 @@
               </ul>
             </li>
           <% else %>
-            <li><%= link_to "Sign in", new_admin_session_path %></li>
+            <li><%= link_to "Sign in", new_admin_admin_session_path %></li>
           <% end %>
         </li>
       </ul>

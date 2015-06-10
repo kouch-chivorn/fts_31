@@ -1,18 +1,8 @@
 module ApplicationHelper
-  def resource_name
-    :user
-  end
-
-  def resource
-    @resource ||= User.new 
-  end
-
-  def devise_mapping
-    @devise_mapping ||= Devise.mappings[:user]
-  end
 
   def shorten(description)
-    description.split(/\s+/, Settings.desc_size+1)[0...Settings.desc_size].join(' ')+"..."
+    description.split(/\s+/, 
+      Settings.desc_size + 1)[0...Settings.desc_size].join(' ') + "..."
   end
 
   def link_to_remove_fields label, f
@@ -29,5 +19,25 @@ module ApplicationHelper
     end
     link_to name,"#", onclick: "add_fields(this, \"#{association}\", 
       \"#{escape_javascript(fields)}\")", remote: true
+  end
+
+  def authenticate_admin!
+    authenticate_admin_admin!
+  end
+
+  def current_admin
+    current_admin_admin
+  end
+
+  def admin_signed_in?
+    admin_admin_signed_in?
+  end
+
+  def destroy_admin_session_path
+    destroy_admin_admin_session_path
+  end
+
+  def new_admin_session_path
+    new_admin_admin_session_path
   end
 end

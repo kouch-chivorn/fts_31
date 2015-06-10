@@ -1,11 +1,9 @@
-class Admins::CategoriesController < ApplicationController
-  before_action :authenticate_admin!
+class Admin::CategoriesController < Admin::BaseController
   before_action :set_category, except: [:new, :index, :create]
 
-  layout "admins/application"
-
   def index
-    @categories = Category.paginate page: params[:page], per_page: Settings.page_size
+    @categories = Category.paginate page: params[:page], 
+      per_page: Settings.page_size
   end
 
   def new
@@ -19,8 +17,9 @@ class Admins::CategoriesController < ApplicationController
     @category = Category.new category_params
     
     if @category.save!
-      flash[:notice] = I18n.t "category.message.notice", category: @category.name
-      redirect_to admins_categories_path
+      flash[:notice] = I18n.t "category.message.notice", 
+        category: @category.name
+      redirect_to admin_categories_path
     else
       render "new"
     end
@@ -28,7 +27,7 @@ class Admins::CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to admins_categories_path
+    redirect_to admin_categories_path
   end
 
   def edit
@@ -36,7 +35,7 @@ class Admins::CategoriesController < ApplicationController
 
   def update
     if @category.update_attributes category_params
-      redirect_to admins_categories_path
+      redirect_to admin_categories_path
     else
       render "edit"
     end

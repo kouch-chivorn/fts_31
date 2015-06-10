@@ -10,13 +10,19 @@ gem "bootstrap-will_paginate"
 gem "devise"
 gem "rails_config"
 gem "jquery-countdown-rails"
+gem "factory_girl_rails"
+gem "sass-rails", "4.0.3"
+gem "uglifier", "2.1.1"
+gem "jquery-rails", "3.0.4"
+gem "turbolinks"
+gem "jbuilder"
+gem "ransack"
 
 group :development, :test do
   gem "rspec-rails", "2.13.1"
   gem "spork-rails", "4.0.0"
   gem "childprocess", "0.3.6"
   gem "sqlite3"
-  gem "factory_girl_rails"
 end
 
 group :test do
@@ -25,14 +31,7 @@ group :test do
   gem "cucumber-rails", "1.4.0", require: false
   gem "database_cleaner", github: "bmabey/database_cleaner"
   gem "libnotify", "0.8.0"
-  gem "factory_girl_rails"
 end
-
-gem "sass-rails", "4.0.3"
-gem "uglifier", "2.1.1"
-gem "jquery-rails", "3.0.4"
-gem "turbolinks"
-gem "jbuilder"
 
 group :doc do
   gem "sdoc", "0.3.20", require: false

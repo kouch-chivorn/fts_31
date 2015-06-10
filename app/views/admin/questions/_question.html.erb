@@ -2,7 +2,7 @@
   <td><%= question.id %></td>
   <td><%= question.category(:category_id).name unless question.category.blank? %></td>
   <td><%= link_to question.content, 
-    edit_admins_category_question_path(@category.id, question) %></td>
+    edit_admin_category_question_path(@category.id, question) %></td>
   <td>
     <table class="table">
         <% question.answers.each do |answer| %>
@@ -13,7 +13,7 @@
     </table>
   </td>
   <td>
-    <%= link_to "Delete", [:admins, @category , question], 
+    <%= link_to "Delete", [:admin, @category , question], 
       data: {method: :delete, confirm: t("question.message.you_sure")},
       class: "btn btn-danger btn-medium" %>
   </td>

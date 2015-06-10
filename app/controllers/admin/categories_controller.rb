@@ -1,8 +1,8 @@
-class Admins::CategoriesController < ApplicationController
-  before_action :authenticate_admin!
+class Admin::CategoriesController < ApplicationController
+  before_action :authenticate_admin_admin!
   before_action :set_category, except: [:new, :index, :create]
 
-  layout "admins/application"
+  layout "admin/application"
 
   def index
     @categories = Category.paginate page: params[:page], per_page: Settings.page_size

@@ -13,7 +13,8 @@ categories.each do |category|
     question = category.questions.create! content: Faker::Lorem.sentence
     correct_ans = Random.rand(1...5)
     4.times do |n|
-      question.answers.create content: Faker::Lorem.sentence, correct: (n+1) == correct_ans
+      question.answers.create content: Faker::Lorem.sentence, 
+        correct: (n+1) == correct_ans
     end
   end
 end

@@ -1,13 +1,10 @@
-class Admin::UsersController < ApplicationController
-  before_action :authenticate_admin_admin!
-
-  layout "admin/application"
+class Admin::UsersController < Admin::BaseController
 
   def index
     @users = User.paginate page: params[:page], per_page: Settings.page_size
   end
 
   def show
-    @user = User.find id: params[:id]
+    @user = User.find_by id: params[:id]
   end
 end

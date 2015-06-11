@@ -1,7 +1,4 @@
-class Admin::AdminsController < ApplicationController
-  before_action :authenticate_admin_admin!
-  
-  layout "admin/application"
+class Admin::AdminsController < Admin::BaseController
 
   def show
     @admin = Admin.find params[:id]

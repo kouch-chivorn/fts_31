@@ -1,7 +1,4 @@
-class Admin::TestsController < ApplicationController
-  before_action :authenticate_admin_admin!
-  
-  layout "admin/application"
+class Admin::TestsController < Admin::BaseController
 
   def index
     @test = Test.new

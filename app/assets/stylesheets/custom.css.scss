@@ -197,3 +197,16 @@ input {
 .incorrect {
   color: red;
 }
+
+#time-left{
+  float: right;
+  position: fixed;
+  top: 75px;
+  right: 260px;
+  width: 230px;
+}
+
+.countdown {
+  border: none !important;
+  background-color: inherit !important;
+}

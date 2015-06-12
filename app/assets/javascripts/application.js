@@ -35,31 +35,16 @@ function ready(){
   });
 
   $("#countdown").countdown({
-    until: parseInt($("#duration").val()),
+    until: $("#duration").val(),
     format: "HMS",
-    labels: ["Years", "Months", "weeks", "Days", "Hours", "Minutes", "Seconds"],
     onExpiry: function(){
-      alert("Your exam is time out we are going to submit your test automaticaly");
+      alert("Your exam is time out we are going to submit your test automatically");
       $("#submit_test_questions").trigger("click");
       $("#submit_test_questions").hidden();
     }
   });
-
-  var d = new Date();
-  d = d.getTime();
-  if (jQuery("#reloadValue").val().length == 0)
-  {
-    jQuery("#reloadValue").val(d);
-    jQuery("body").show();
-  }
-  else
-  {
-    jQuery("#reloadValue").val("Testing");
-    location.reload();
-  }
 }
 
-
-//$(document).ready(ready);
+$(document).ready(ready);
 $(document).on("page:load", ready);
 $(document).on("page:update", ready);

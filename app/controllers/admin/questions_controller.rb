@@ -1,8 +1,6 @@
-class Admin::QuestionsController < ApplicationController
-  before_action :authenticate_admin_admin!, :set_category
+class Admin::QuestionsController < Admin::BaseController
+  before_action :set_category
   before_action :set_question, except: [:index, :new, :create]
-
-  layout "admin/application"
   
   def index
     @questions = Question.paginate page: params[:page], 

@@ -1,16 +1,14 @@
-class Admin::TestsController < ApplicationController
-  before_action :authenticate_admin_admin!
-  
-  layout "admin/application"
+class Admin::TestsController < Admin::BaseController
 
   def index
-    @test = Test.new
-    @tests = Test.paginate page: params[:page], per_page: Settings.page_size
+    @search = Test.search params[:q]
+    @tests = @search.result
   end
 
   def destroy
-    Test.find params[:id].destroy
+    test = Test.find params[:id]
+    test.destroy
     flash[:success] = t("test.deleted")
-    redirect_to admins_tests_path
+    redirect_to admin_tests_path
   end
 end

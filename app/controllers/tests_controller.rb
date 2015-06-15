@@ -1,6 +1,7 @@
 class TestsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_test,only: [:show, :edit, :update]
+  before_action :set_cache_headers, only: [:index, :edit]
   def index
     @test = Test.new
     @tests = current_user.tests
@@ -64,5 +65,12 @@ class TestsController < ApplicationController
 
   def set_test
     @test = Test.find params[:id]
+  end
+
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0,
+      must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Tue, 01 Jan 1990 00:00:00 GMT"
   end
 end

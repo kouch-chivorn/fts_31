@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/hmtl; charset=UTF-8" http-equiv="Content-Type" />
+    <title> <%= yield :title %> | TEST APP </title>
+  </head>
+  <body>
+    <h1> The Result of Your Test, <%= @user.name %> </h1>
+    <p> Score:  <%= @test.result %> / <%= Settings.test_quest.num %> </p> 
+    <p> To check more details of your result, 
+      please click <%= link_to "HERE", @url  %></P>
+
+    <p> Thanks you for taking the test!</p>
+  </body>
+</html>

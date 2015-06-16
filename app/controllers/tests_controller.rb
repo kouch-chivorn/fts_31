@@ -51,6 +51,7 @@ class TestsController < ApplicationController
     if @test.update_attributes test_question_params
       @test.update_attributes status: Settings.status.view
       flash[:success] = t("flash.answer_update")
+      UserMailer.email_result(@test.user).deliver_later
       redirect_to test_path @test
     else
       redirect_to :back

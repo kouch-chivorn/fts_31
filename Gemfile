@@ -17,6 +17,7 @@ gem "jquery-rails", "3.0.4"
 gem "turbolinks"
 gem "jbuilder"
 gem "ransack"
+gem "figaro"
 
 group :development, :test do
   gem "rspec-rails", "2.13.1"
@@ -38,7 +39,7 @@ group :doc do
 end
 
 group :production do
-  gem "rails_12factor", "0.0.2"
+  gem "rails_12factor"
   gem "pg"
 end
 

@@ -18,6 +18,10 @@ gem "turbolinks"
 gem "jbuilder"
 gem "ransack"
 gem "figaro"
+gem "sidekiq"
+gem "sinatra", require: false
+gem "redis"
+gem "hiredis"
 
 group :development, :test do
   gem "rspec-rails", "2.13.1"

@@ -6,8 +6,8 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def destroy
-    test = Test.find params[:id]
-    test.destroy
+    @test = Test.find params[:id]
+    @test.destroy
     flash[:success] = t("test.deleted")
     redirect_to admin_tests_path
   end

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  require "sidekiq/web"
+  mount Sidekiq::Web => "/sidekiq"
+
   namespace :admin do
     root "users#index"
     resources :categories do

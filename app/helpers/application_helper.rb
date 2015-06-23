@@ -1,23 +1,32 @@
 module ApplicationHelper
 
+  def full_title page_title
+    base_title = "Test App"
+    if page_title.empty?
+      base_title
+    else
+      "#{base_title} | #{page_title}"
+    end
+  end
+
   def shorten(description)
-    description.split(/\s+/, 
-      Settings.desc_size + 1)[0...Settings.desc_size].join(' ') + "..."
+    description.split(/\s+/,
+                      Settings.desc_size + 1)[0...Settings.desc_size].join(' ') + "..."
   end
 
   def link_to_remove_fields label, f
-    field = f.hidden_field(:_destroy) 
+    field = f.hidden_field(:_destroy)
     link = link_to label,"#", onclick: "remove_fields(this)", remote: true
     field + link
   end
-  
+
   def link_to_add_fields(name, f, association)
     new_object = f.object.class.reflect_on_association(association).klass.new
-    fields = f.fields_for(association, new_object, 
-      child_index: "new_#{association}") do |builder|
+    fields = f.fields_for(association, new_object,
+    child_index: "new_#{association}") do |builder|
       render(association.to_s.singularize + "_fields", f: builder)
     end
-    link_to name,"#", onclick: "add_fields(this, \"#{association}\", 
+    link_to name,"#", onclick: "add_fields(this, \"#{association}\",
       \"#{escape_javascript(fields)}\")", remote: true
   end
 

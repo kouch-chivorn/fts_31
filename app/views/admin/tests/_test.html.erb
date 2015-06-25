@@ -1,6 +1,6 @@
 <tr>
     <td> <%= link_to test.category.name, "#" %></td>
-    <td> <%= link_to test.user.name, test.user %> </td>
+    <td> <%= link_to test.user.name, test.user unless test.user.nil? %> </td>
     <td> <%= test.result %> </td>
     <td> <%= test.created_at %> </td>
     <td> <%= test.started_time %> </td>

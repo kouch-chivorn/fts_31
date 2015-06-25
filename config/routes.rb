@@ -15,9 +15,8 @@ Rails.application.routes.draw do
   
   devise_for :users
   resources :users, only: :show
-  resources :tests, except: [:new, :destroy] 
-
-
+  resources :tests, except: [:new, :index, :destroy] 
+  match "/tests/(:category_id)", to: "tests#index", via: :get
   root "static_pages#home"
   get "admin/:id", to: "admin/admins#show", as: :admin
   match "/help", to: "static_pages#help", via: :get

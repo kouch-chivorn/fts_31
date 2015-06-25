@@ -1,10 +1,11 @@
 <h1> All Test </h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for @test, class: "question-form" do |f| %>
+    <%= form_for @test, method: :post, class: "question-form" do |f| %>
       <div class="border">
-        <%= f.collection_select :category_id, Category.all, :id, :name, {},
-          {class: "form-control test-option", style: "width: auto"} %>
+        <%= f.collection_select :category_id, Category.all, :id, :name, 
+          {selected: params[:category_id], prompt: "Please select a category"},
+          {class: "form-control test-option", style: "width: auto" } %>
         <%= f.submit "Start New Test", 
           class: "btn-start btn btn-primary btn-large"%>
       </div>

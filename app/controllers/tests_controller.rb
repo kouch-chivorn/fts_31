@@ -5,8 +5,8 @@ class TestsController < ApplicationController
   def index
     @test = Test.new
     @tests = current_user.tests
-      .order("created_at DESC")
-      .paginate page: params[:page], per_page: Settings.page_size
+    .order("created_at DESC")
+    .paginate page: params[:page], per_page: Settings.page_size
   end
 
   def new
@@ -24,7 +24,7 @@ class TestsController < ApplicationController
     test.status = Settings.status.start
     if test.save
       flash[:success] = t("test.created")
-      redirect_to tests_path
+      redirect_to tests_path category_id: params[:test][:category_id]
     else
       render :new
     end
@@ -34,7 +34,7 @@ class TestsController < ApplicationController
     unless @test.status == Settings.status.view
       if @test.started_time.nil?
         started_time = Time.zone.now
-        @test.update_attributes status: Settings.status.testing, 
+        @test.update_attributes status: Settings.status.testing,
           started_time: started_time
       end
       @time_left = @test.category.duration * 60 - (Time.zone.now - @test.started_time).to_i

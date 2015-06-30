@@ -23,18 +23,20 @@ en:
   error_message: "The form contains %{message}"
   category:
     message:
-      notice: "%{category} is created successfully"
+      notice: "%{category} has been created successfully"
       you_sure: "Are you sure?"
   question:
     message:
-      notice: "A %{question} question is created successfully"
-      delete: "%{question} is deleted successfully"
+      notice: "A %{question} question has been created successfully"
+      delete: "%{question} has been deleted successfully"
       you_sure: "Are you sure?"
     model:
       choose_one: "You have to choose one correct answer."
   you_sure: "Are you sure?"
   test:
-    deleted: "test is deleted successfully"
+    deleted: "test has been deleted successfully"
+    create: "Test has been created successfully"
+    failed: "Failed to create test!"
   start: "Start"
   view: "View"
   testing: "Testing"

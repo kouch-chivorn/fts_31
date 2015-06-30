@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :test do
-    user
-    category
+    user      {FactoryGirl.create :user}
+    category  {FactoryGirl.create :category}
   end
 end

@@ -7,7 +7,7 @@ class Test < ActiveRecord::Base
   validates_presence_of :category_id
   before_create :create_questions
   before_update :update_result
-
+  before_update :validates_test
   accepts_nested_attributes_for :test_questions
 
   def time_out?
@@ -15,7 +15,7 @@ class Test < ActiveRecord::Base
       Time.zone.now > started_time + self.category.duration.minutes
     end
   end
-  
+
   private
   def create_questions
     questions= self.category.questions.random_questions
@@ -27,5 +27,9 @@ class Test < ActiveRecord::Base
       test_question.answer && test_question.answer.correct
     end.count
     self.result = points
+  end
+
+  def validates_test
+    self.result.nil?
   end
 end

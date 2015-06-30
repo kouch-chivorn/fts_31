@@ -27,6 +27,7 @@ group :development, :test do
   gem "spork-rails"
   gem "childprocess"
   gem "sqlite3"
+  gem "rspec-activemodel-mocks"
 end
 
 group :test do

@@ -27,6 +27,7 @@ group :development, :test do
   gem "spork-rails"
   gem "childprocess"
   gem "sqlite3"
+  gem "rspec-activemodel-mocks"
 end
 
 group :test do
@@ -36,6 +37,7 @@ group :test do
   gem "database_cleaner"
   gem "rb-inotify"
   gem "libnotify"
+  gem "rspec-sidekiq"
 end
 
 group :doc do

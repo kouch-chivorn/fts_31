@@ -7,15 +7,14 @@ class Test < ActiveRecord::Base
   validates_presence_of :category_id
   before_create :create_questions
   before_update :update_result
-
-  accepts_nested_attributes_for :test_questions
+  accepts_nested_attributes_for :test_questions, allow_destroy: true
 
   def time_out?
     if started_time
       Time.zone.now > started_time + self.category.duration.minutes
     end
   end
-  
+
   private
   def create_questions
     questions= self.category.questions.random_questions

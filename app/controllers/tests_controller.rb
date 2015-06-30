@@ -2,6 +2,7 @@ class TestsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_test,only: [:show, :edit, :update]
   before_action :set_cache_headers, only: [:index, :edit]
+
   def index
     @test = Test.new
     @tests = current_user.tests
@@ -9,24 +10,19 @@ class TestsController < ApplicationController
     .paginate page: params[:page], per_page: Settings.page_size
   end
 
-  def new
-    @test = Test.new
-  end
-
   def show
     @i = 0
   end
 
   def create
-    category = Category.find params[:test][:category_id]
-    test = category.tests.build
-    test.user_id = current_user.id
-    test.status = Settings.status.start
-    if test.save
+    @test = current_user.tests.create category_id: params[:test][:category_id]
+    @test.status = Settings.status.start
+    if @test.save
       flash[:success] = t("test.created")
       redirect_to tests_path category_id: params[:test][:category_id]
     else
-      render :new
+      flash[:danger] = t("test.failed")
+      redirect_to tests_path
     end
   end
 
@@ -48,16 +44,16 @@ class TestsController < ApplicationController
   end
 
   def update
-    if @test.update_attributes test_question_params
+    if !@test.result.nil? && (@test.update_attributes test_question_params)
       @test.update_attributes status: Settings.status.view
       flash[:success] = t("flash.answer_update")
       UserMailer.delay.email_result(@test.user.id)
       redirect_to test_path @test
     else
+      flash[:danger] = t("test.failed")
       redirect_to :back
     end
   end
-
 
   private
   def test_question_params
@@ -65,13 +61,13 @@ class TestsController < ApplicationController
   end
 
   def set_test
-    @test = Test.find params[:id]
+    @test = current_user.tests.find params[:id]
   end
 
   def set_cache_headers
     response.headers["Cache-Control"] = "no-cache, no-store, max-age=0,
       must-revalidate"
     response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "Tue, 01 Jan 1990 00:00:00 GMT"
+    response.headers["Expires"] = "01 Jan 1990 00:00:00 GMT"
   end
 end

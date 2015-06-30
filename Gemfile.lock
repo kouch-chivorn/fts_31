@@ -187,6 +187,14 @@ GEM
       redis (~> 3.0, >= 3.0.4)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rspec (3.3.0)
+      rspec-core (~> 3.3.0)
+      rspec-expectations (~> 3.3.0)
+      rspec-mocks (~> 3.3.0)
+    rspec-activemodel-mocks (1.0.1)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      rspec-mocks (>= 2.99, < 4.0)
     rspec-core (3.3.1)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.0)
@@ -203,6 +211,9 @@ GEM
       rspec-expectations (~> 3.3.0)
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
+    rspec-sidekiq (2.0.0)
+      rspec (~> 3.0, >= 3.0.0)
+      sidekiq (>= 2.4.0)
     rspec-support (3.3.0)
     sass (3.4.14)
     sass-rails (5.0.3)
@@ -280,7 +291,9 @@ DEPENDENCIES
   ransack
   rb-inotify
   redis
+  rspec-activemodel-mocks
   rspec-rails
+  rspec-sidekiq
   sass-rails
   sdoc (= 0.3.20)
   sidekiq
